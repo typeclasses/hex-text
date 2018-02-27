@@ -82,6 +82,8 @@ encodeHex bs =
 -- through @9@ and letters @a@ through @f@, then the result is a
 -- 'Just' value.
 --
+-- Unpacking the ByteString in the following examples allows for 
+-- prettier printing in the REPL.
 -- >>> (fmap ByteString.unpack . decodeHex . Text.pack) "c0a80102"
 -- Just [192,168,1,2]
 --
