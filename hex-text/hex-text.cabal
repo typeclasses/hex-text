@@ -14,7 +14,7 @@ author:     Chris Martin
 maintainer: Chris Martin, Julie Moronuki
 
 copyright: 2018 Typeclass Consulting, LLC
-license: Apache-2.0
+license: MIT
 license-file: license.txt
 
 build-type: Simple
