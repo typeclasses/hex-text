@@ -32,7 +32,7 @@ library
   hs-source-dirs: src
   build-depends:
       base >=4.7 && <5
-    , base16-bytestring
+    , base16-bytestring <1.0
     , bytestring
     , text
   exposed-modules:
