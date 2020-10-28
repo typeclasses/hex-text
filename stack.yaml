@@ -1,4 +1,7 @@
-resolver: lts-12.10
+resolver: lts-16.20
 
 packages:
   - hex-text
+
+extra-deps:
+  - base16-bytestring-1.0.0.0
