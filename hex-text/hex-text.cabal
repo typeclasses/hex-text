@@ -30,6 +30,7 @@ source-repository head
 
 library
   default-language: Haskell2010
+  ghc-options: -Wall
   hs-source-dirs: src
   build-depends:
       base >=4.7 && <4.15
@@ -41,6 +42,7 @@ library
 
 test-suite doctest
   default-language: Haskell2010
+  ghc-options: -Wall
   hs-source-dirs: test
   type: exitcode-stdio-1.0
   main-is: doctest.hs
