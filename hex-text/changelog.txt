@@ -1,0 +1,6 @@
+Initial release: version 0.1.0.0, published in 2018.
+
+Version 0.1.0.2, published October 2020:
+  ★ Adds tighter version bounds
+  ★ Supports base16-bytestring version 1.0,
+    drops support for earlier versions
