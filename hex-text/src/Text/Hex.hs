@@ -107,8 +107,7 @@ encodeHex bs =
 
 decodeHex :: Text -> Maybe ByteString
 decodeHex txt =
-    let (x, remainder) = Base16.decode (Text.encodeUtf8 txt)
-    in  if ByteString.null remainder then Just x else Nothing
+    either (const Nothing) Just (Base16.decode (Text.encodeUtf8 txt))
 
 -- |
 -- @lazilyEncodeHex@ is the lazy variant of 'encodeHex'.
