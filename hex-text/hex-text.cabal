@@ -1,5 +1,5 @@
 name: hex-text
-version: 0.1.0.0
+version: 0.1.0.2
 category: Text
 
 synopsis: ByteString-Text hexidecimal conversions
