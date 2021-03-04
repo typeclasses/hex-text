@@ -27,7 +27,8 @@ tested-with:
   , GHC == 8.4.3
   , GHC == 8.6.5
   , GHC == 8.8.4
-  , GHC == 8.10.1
+  , GHC == 8.10.3
+  , GHC == 9.0.1
 
 extra-source-files:
     README.md
@@ -42,7 +43,7 @@ library
   ghc-options: -Wall
   hs-source-dirs: src
   build-depends:
-      base >=4.9 && <4.15
+      base >=4.9 && <4.16
     , base16-bytestring ^>= 1.0
     , bytestring ^>=0.10 || ^>=0.11
     , text ^>= 1.2
@@ -57,5 +58,5 @@ test-suite doctest
   main-is: doctest.hs
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.9 && <4.15
+      base >=4.9 && <4.16
     , doctest ^>= 0.16 || ^>= 0.17
