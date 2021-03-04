@@ -22,18 +22,26 @@ x # True = []
 x # False = [x]
 
 encodeHexTests = fold
-  [ 1 # (encodeHex . ByteString.singleton) 192 == fromString "c0"
-  , 2 # (encodeHex . ByteString.singleton) 168 == fromString "a8"
-  , 3 # (encodeHex . ByteString.pack) [192, 168, 1, 2] == fromString "c0a80102"
+  [ 1 # (encodeHex . ByteString.singleton) 192
+      == fromString "c0"
+  , 2 # (encodeHex . ByteString.singleton) 168
+      == fromString "a8"
+  , 3 # (encodeHex . ByteString.pack) [192, 168, 1, 2]
+      == fromString "c0a80102"
   ]
 
 decodeHexTests = fold
-  [ 4 # (fmap ByteString.unpack . decodeHex . Text.pack) "c0a80102" == Just [192,168,1,2]
-  , 5 # (fmap ByteString.unpack . decodeHex . Text.pack) "c0a8010" == Nothing
-  , 6 # (fmap ByteString.unpack . decodeHex . Text.pack) "x0a80102" == Nothing
-  , 7 # (fmap ByteString.unpack . decodeHex . Text.pack) "C0A80102" == Just [192,168,1,2]
+  [ 4 # (fmap ByteString.unpack . decodeHex . Text.pack) "c0a80102"
+      == Just [192,168,1,2]
+  , 5 # (fmap ByteString.unpack . decodeHex . Text.pack) "c0a8010"
+      == Nothing
+  , 6 # (fmap ByteString.unpack . decodeHex . Text.pack) "x0a80102"
+      == Nothing
+  , 7 # (fmap ByteString.unpack . decodeHex . Text.pack) "C0A80102"
+      == Just [192,168,1,2]
   ]
 
 lazilyEncodeHexTests = fold
-  [ 8 # (LazyText.take 8 . lazilyEncodeHex . LazyByteString.pack . cycle) [1, 2, 3] == fromString "01020301"
+  [ 8 # (LazyText.take 8 . lazilyEncodeHex . LazyByteString.pack . cycle) [1, 2, 3]
+      == fromString "01020301"
   ]
