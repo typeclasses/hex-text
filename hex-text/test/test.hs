@@ -1,4 +1,5 @@
 import Data.Foldable
+import Data.Semigroup
 import Data.String
 import Numeric.Natural
 import System.Exit
