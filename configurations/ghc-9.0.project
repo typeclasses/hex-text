@@ -1,0 +1,5 @@
+packages: hex-text
+
+constraints:
+    base == 4.15.*
+  , bytestring == 0.11.*
