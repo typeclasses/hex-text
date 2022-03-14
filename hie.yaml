@@ -1,0 +1,6 @@
+cradle:
+  cabal:
+    - path: "./hex-text/src"
+      component: "lib:hex-text"
+    - path: "./hex-text/test"
+      component: "test:test-hex-text"
