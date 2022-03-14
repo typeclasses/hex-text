@@ -14,11 +14,11 @@ main :: IO ()
 main = run tests
 
 tests :: [Natural]
-tests = encodeHexTests <> decodeHexTests <> lazilyEncodeHexTests
+tests = encodeHexTests ++ decodeHexTests ++ lazilyEncodeHexTests
 
 run :: [Natural] -> IO ()
 run [] = putStrLn "Okay"
-run xs = die $ "Test failures: " <> show (xs :: [Natural])
+run xs = die $ "Test failures: " ++ show (xs :: [Natural])
 
 infix 0 #
 (#) :: a -> Bool -> [a]
