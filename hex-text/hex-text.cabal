@@ -47,5 +47,5 @@ test-suite test-hex-text
     import: base
     hs-source-dirs: test
     type: exitcode-stdio-1.0
-    main-is: test.hs
+    main-is: Main.hs
     build-depends: hex-text
