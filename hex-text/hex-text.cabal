@@ -1,7 +1,7 @@
 cabal-version: 3.0
 
 name: hex-text
-version: 0.1.0.4
+version: 0.1.0.6
 category: Text
 
 synopsis: ByteString-Text hexidecimal conversions
@@ -32,7 +32,7 @@ source-repository head
 common base
     default-language: Haskell2010
     build-depends:
-        base ^>= 4.9 || ^>= 4.10 || ^>= 4.11 || ^>= 4.12 || ^>= 4.13 || ^>= 4.14 || ^>= 4.15
+        base ^>= 4.9 || ^>= 4.10 || ^>= 4.11 || ^>= 4.12 || ^>= 4.13 || ^>= 4.14 || ^>= 4.15 || ^>= 4.16
       , base16-bytestring ^>= 1.0
       , bytestring ^>= 0.10 || ^>= 0.11
       , text ^>= 1.2
