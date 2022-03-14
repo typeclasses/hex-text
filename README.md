@@ -4,7 +4,7 @@
 
 # Motivation
 
-When using Stripe for payments, Stripe sends a signature as a hexidecimal `Text` value. The `cryptonite` package can be used to verify the signature, but it requires `ByteString` values, not `Text`. 
+When using Stripe for payments, Stripe sends a signature as a hexidecimal `Text` value. The `cryptonite` package can be used to verify the signature, but it requires `ByteString` values, not `Text`.
 
 # Example usage
 
@@ -17,4 +17,3 @@ A `ByteString` is a list of bytes. A byte is a number between 0 and 255, represe
 λ> (encodeHex . pack) [1, 2, 3, 253, 254, 255]
 "010203fdfeff"
 ```
-
