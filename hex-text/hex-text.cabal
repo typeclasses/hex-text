@@ -23,7 +23,6 @@ build-type: Simple
 
 extra-source-files:
     README.md
-    changelog.txt
 
 source-repository head
     type: git
