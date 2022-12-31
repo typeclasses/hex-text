@@ -19,6 +19,8 @@ module Text.Hex
 
     ) where
 
+import Prelude (either, Maybe (..), const)
+
 -- base16-bytestring
 import qualified Data.ByteString.Base16 as Base16
 import qualified Data.ByteString.Base16.Lazy as LazyBase16

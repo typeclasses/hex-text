@@ -1,7 +1,7 @@
 cabal-version: 3.0
 
 name: hex-text
-version: 0.1.0.7
+version: 0.1.0.8
 category: Text
 
 synopsis: ByteString-Text hexidecimal conversions
@@ -19,10 +19,7 @@ copyright: 2021 Mission Valley Software LLC
 license: MIT
 license-file: license.txt
 
-build-type: Simple
-
-extra-source-files:
-    README.md
+extra-source-files: *.md
 
 source-repository head
     type: git
@@ -30,11 +27,12 @@ source-repository head
 
 common base
     default-language: Haskell2010
+    default-extensions: NoImplicitPrelude
     build-depends:
-        base ^>= 4.9 || ^>= 4.10 || ^>= 4.11 || ^>= 4.12 || ^>= 4.13 || ^>= 4.14 || ^>= 4.15 || ^>= 4.16 || ^>= 4.17
-      , base16-bytestring ^>= 1.0
-      , bytestring ^>= 0.10 || ^>= 0.11
-      , text ^>= 1.2 || ^>= 2.0
+        base ^>= 4.14 || ^>= 4.15 || ^>= 4.16 || ^>= 4.17
+      , base16-bytestring ^>= 1.0.2
+      , bytestring ^>= 0.10.12 || ^>= 0.11
+      , text ^>= 1.2.4 || ^>= 2.0
 
 library
     import: base
@@ -47,4 +45,6 @@ test-suite test-hex-text
     hs-source-dirs: test
     type: exitcode-stdio-1.0
     main-is: Main.hs
-    build-depends: hex-text
+    build-depends:
+        hex-text
+      , hspec ^>= 2.8.5 || ^>= 2.9 || ^>= 2.10

@@ -1,9 +1,9 @@
-import Data.Foldable (Foldable (fold))
-import Data.Semigroup ()
-import Data.String (IsString (fromString))
-import Numeric.Natural (Natural)
-import System.Exit (die)
 import Text.Hex (decodeHex, encodeHex, lazilyEncodeHex)
+
+import Test.Hspec (hspec, describe, it, shouldBe, Spec)
+
+import Prelude ((.), ($), cycle, IO, fmap, Maybe (..))
+import Data.String (fromString)
 
 import qualified Data.ByteString as ByteString
 import qualified Data.ByteString.Lazy as LazyByteString
@@ -11,44 +11,33 @@ import qualified Data.Text as Text
 import qualified Data.Text.Lazy as LazyText
 
 main :: IO ()
-main = run tests
+main = hspec $ do
+    encodeHexTests
+    decodeHexTests
+    lazilyEncodeHexTests
 
-tests :: [Natural]
-tests = encodeHexTests ++ decodeHexTests ++ lazilyEncodeHexTests
+encodeHexTests :: Spec
+encodeHexTests = describe "encodeHex" $ do
+    it "can encode a single byte" $ do
+        let f = encodeHex . ByteString.singleton
+        f 192 `shouldBe` fromString "c0"
+        f 168 `shouldBe` fromString "a8"
+    it "can encode many bytes" $ do
+        let f = encodeHex . ByteString.pack
+        f [192, 168, 1, 2] `shouldBe` fromString "c0a80102"
 
-run :: [Natural] -> IO ()
-run [] = putStrLn "Okay"
-run xs = die $ "Test failures: " ++ show (xs :: [Natural])
+decodeHexTests :: Spec
+decodeHexTests = describe "decodeHex" $ do
+    let f = fmap ByteString.unpack . decodeHex . Text.pack
+    it "can decode" $ do
+        f "c0a80102" `shouldBe` Just [192,168,1,2]
+        f "C0A80102" `shouldBe` Just [192,168,1,2]
+    it "can fail" $ do
+        f "c0a8010" `shouldBe` Nothing
+        f "x0a80102" `shouldBe` Nothing
 
-infix 0 #
-(#) :: a -> Bool -> [a]
-x # True  = []
-x # False = [x]
-
-encodeHexTests :: [Natural]
-encodeHexTests = fold
-  [ 1 # (encodeHex . ByteString.singleton) 192
-      == fromString "c0"
-  , 2 # (encodeHex . ByteString.singleton) 168
-      == fromString "a8"
-  , 3 # (encodeHex . ByteString.pack) [192, 168, 1, 2]
-      == fromString "c0a80102"
-  ]
-
-decodeHexTests :: [Natural]
-decodeHexTests = fold
-  [ 4 # (fmap ByteString.unpack . decodeHex . Text.pack) "c0a80102"
-      == Just [192,168,1,2]
-  , 5 # (fmap ByteString.unpack . decodeHex . Text.pack) "c0a8010"
-      == Nothing
-  , 6 # (fmap ByteString.unpack . decodeHex . Text.pack) "x0a80102"
-      == Nothing
-  , 7 # (fmap ByteString.unpack . decodeHex . Text.pack) "C0A80102"
-      == Just [192,168,1,2]
-  ]
-
-lazilyEncodeHexTests :: [Natural]
-lazilyEncodeHexTests = fold
-  [ 8 # (LazyText.take 8 . lazilyEncodeHex . LazyByteString.pack . cycle) [1, 2, 3]
-      == fromString "01020301"
-  ]
+lazilyEncodeHexTests :: Spec
+lazilyEncodeHexTests = describe "lazilyEncodeHex" $ do
+    let f = lazilyEncodeHex . LazyByteString.pack
+    it "can decode part of an infinite list" $
+        (LazyText.take 8 . f . cycle) [1, 2, 3] `shouldBe` fromString "01020301"
