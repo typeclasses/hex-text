@@ -21,8 +21,7 @@ license-file: license.txt
 
 build-type: Simple
 
-extra-source-files:
-    README.md
+extra-source-files: *.md
 
 source-repository head
     type: git
