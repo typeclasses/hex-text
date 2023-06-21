@@ -46,5 +46,5 @@ test-suite test-hex-text
     type: exitcode-stdio-1.0
     main-is: Main.hs
     build-depends:
-        hex-text
+      , hex-text
       , hspec ^>= 2.8.5 || ^>= 2.9 || ^>= 2.10 || ^>= 2.11
