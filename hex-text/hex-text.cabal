@@ -1,7 +1,7 @@
 cabal-version: 3.0
 
 name: hex-text
-version: 0.1.0.8
+version: 0.1.0.9
 category: Text
 
 synopsis: ByteString-Text hexidecimal conversions
@@ -26,13 +26,15 @@ source-repository head
     location: https://github.com/typeclasses/hex-text
 
 common base
-    default-language: Haskell2010
-    default-extensions: NoImplicitPrelude
+    default-language: GHC2021
+    default-extensions:
+        BlockArguments
+        NoImplicitPrelude
     build-depends:
-      , base ^>= 4.14 || ^>= 4.15 || ^>= 4.16 || ^>= 4.17 || ^>= 4.18
+      , base ^>= 4.16 || ^>= 4.17 || ^>= 4.18
       , base16-bytestring ^>= 1.0.2
-      , bytestring ^>= 0.10.12 || ^>= 0.11
-      , text ^>= 1.2.4 || ^>= 2.0
+      , bytestring ^>= 0.11.4
+      , text ^>= 1.2.5 || ^>= 2.0
 
 library
     import: base
@@ -47,4 +49,4 @@ test-suite test-hex-text
     main-is: Main.hs
     build-depends:
       , hex-text
-      , hspec ^>= 2.8.5 || ^>= 2.9 || ^>= 2.10 || ^>= 2.11
+      , hspec ^>= 2.9.7 || ^>= 2.10 || ^>= 2.11
