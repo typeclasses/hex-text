@@ -47,4 +47,4 @@ test-suite test-hex-text
     main-is: Main.hs
     build-depends:
         hex-text
-      , hspec ^>= 2.8.5 || ^>= 2.9 || ^>= 2.10
+      , hspec ^>= 2.8.5 || ^>= 2.9 || ^>= 2.10 || ^>= 2.11
